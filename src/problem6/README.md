@@ -54,7 +54,7 @@ flowchart TD
 ### Why Pub/Sub instead of writing directly to DB?
 
 - **Handles spikes:** If 10k requests come in at once, Pub/Sub buffers them. Worker processes at a safe rate.
-- **Fast responses:** Publishing takes ~1-2ms. Writing to DB takes way longer. Users don't wait.
+- **Fast responses:** Publishing to Pub/Sub is faster than writing directly to the database. Users don't wait.
 - **Batching:** If same user sends +10, +5, +3, worker combines them into one write (+18).
 - **Fault tolerance:** If DB is down, messages stay in Pub/Sub and retry automatically.
 
@@ -275,7 +275,6 @@ Note: We're NOT using Redis Pub/Sub. API just queries Redis directly.
 **API Server (Cloud Run):**
 - Auto-scales on request concurrency
 - Bump max instances if you see latency spikes
-- Keep min instances = 1 so WebSocket connections stay alive
 
 **Worker (Cloud Run):**
 - Set `--min-instances=1` and `--cpu-always-allocated`
