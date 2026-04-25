@@ -182,7 +182,7 @@ Without auth, anyone could submit score updates for any user. Bad actors could m
 | Thing | Value |
 |-------|-------|
 | Algorithm | HS256 (HMAC-SHA256) |
-| Library | `python-jose` |
+| Library | `jose` (Node.js) or equivalent for your runtime |
 | Token lifetime | 24 hours |
 | Token payload | `{sub: user_id, exp: timestamp}` |
 | Secret storage | GCP Secret Manager |
