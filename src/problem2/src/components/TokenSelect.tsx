@@ -14,6 +14,7 @@ export function TokenSelect({ tokens, value, onChange, disabled }: TokenSelectPr
   return (
     <div className="relative flex items-center gap-2">
       <img
+        key={value}
         src={`${ICON_URL}/${value}.svg`}
         alt=""
         className="h-6 w-6 rounded-full"

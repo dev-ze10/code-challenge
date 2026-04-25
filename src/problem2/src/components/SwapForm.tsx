@@ -64,7 +64,7 @@ export function SwapForm() {
     return "Swap";
   }
 
-  const canSwap = !errors.amount && !errors.toCurrency && !!amount && !isSubmitting;
+  const canSwap = !errors.amount && !errors.toCurrency && !!amount && !!received && !isSubmitting;
 
   async function onSubmit(data: SwapFormData) {
     await new Promise((r) => setTimeout(r, 1500));
