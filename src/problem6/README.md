@@ -258,11 +258,6 @@ Note: We're NOT using Redis Pub/Sub. API just queries Redis directly.
 - Bulk updates Redis using pipeline
 - Acks messages if successful, nacks if failed
 
-**Configuration (Cloud Run):**
-- Set `--cpu-always-allocated` so the pull loop keeps running
-- Set `--min-instances=1` (can't scale to zero with pull subscriptions)
-- Scales up based on CPU/memory when processing large batches
-
 **Failure handling:**
 - Max 5 delivery attempts
 - After 5 failures, message goes to dead-letter queue
